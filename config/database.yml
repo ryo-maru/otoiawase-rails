@@ -1,0 +1,22 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: otoiawase_development
+
+
+test:
+  <<: *default
+  database: otoiawase_test
+
+
+production:
+  <<: *default
+  database: otoiawase_production
+  username: otoiawase
+  password: <%= ENV['OTOIAWASE_DATABASE_PASSWORD'] %>
